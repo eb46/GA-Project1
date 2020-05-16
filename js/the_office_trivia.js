@@ -6,10 +6,10 @@ $(() => {
   // $('#next-question').hide()
   // $('#show-answer').hide()
 
-  const triviaQuestions = ["What type of farm does Dwight own?", "How long were Pam and Roy engaged?", "What tattoo is Andy forced to get?", "What is Michael's username for online dating websites?", `Who bought Michael the "Best Boss" mug?`]
-  const triviaAnswers = ["Beet farm", "3-4 years", "A nard dog", "Little kid lover", "Himself"]
+  const triviaQuestions = [`What type of farm does Dwight own?`, `How long were Pam and Roy engaged?`, `What tattoo is Andy forced to get?`, `What is Michael's username for online dating websites?`, `Who bought Michael the "Best Boss" mug?`, `What is Dwight's nickname for Angela?`, `What is the name of the criminal terrorizing Scranton?`, `Who calls Jim the "Big Tuna"?`]
+  const triviaAnswers = [`A Beet farm`, `3-4 years`, `A nard dog`, `Little kid lover`, `He bought it himself`, `Monkey`, `The Scranton Strangler`, `Andy`]
 
-  const numOfGifs = 25
+  const numOfGifs = 40
 
   $.ajax({
     url: `https://api.giphy.com/v1/gifs/search?api_key=MaEcz1xz6n3LeO2zH2QTK78RvmKV6aBS&q=The Office&limit=${numOfGifs}&offset=0&rating=G&lang=en`,
@@ -20,32 +20,33 @@ $(() => {
     .then((gifs) => {
 
 
-      const modalMessage = () => {
-        const $endGame = $('<h3>').text('Great job! Prison Mike is proud of you.')
-        const ranGif = Math.floor(Math.random() * 50)
-        const $imgGif = $('<img>')
-            .attr('src', gifs.data[ranGif].images.downsized.url)
-            .css({'width':'160px', 'height':'130px'})
-        $('#modal-message').append($imgGif)
-        $('#modal-message').append($endGame)
-        $('#modal').css('display', 'block')
-        $('#modal-close-button').on('click', closeModal)
-      }
-
-      const closeModal = () => {
-        $('#modal').css('display', 'none')
-          window.location.reload()
-      }
-
-
       $('#start').on('click', (event) => {
         $('#answer-container').empty()
         $('#start').hide()
 
+        const modalMessage = () => {
+          const $endGame = $('<h3>').text('Great job! Prison Mike is proud of you.')
+          const ranGif = Math.floor(Math.random() * 50)
+          const $imgGif = $('<img>')
+              .attr('src', gifs.data[ranGif].images.downsized.url)
+              .css({'width':'160px', 'height':'130px', 'margin':'auto'})
+          $('#modal-message').append($imgGif)
+          $('#modal-message').append($endGame).css({'display':'flex', 'flex-direction':'column'})
+          $('#modal').css('display', 'block')
+          $('#modal-close-button').on('click', closeModal)
+        }
+
+        const closeModal = () => {
+          $('#modal-message').css('display', 'none')
+            window.location.reload()
+        }
+
             const checkAnswers = () => {
               if (triviaQuestions.length === 0) {
                 modalMessage()
-              }
+              // } else if (triviaQuestions.length === 5){
+              //   modalMessageContinue()
+              // }
             }
 
             const $displayQuestion = $('<div>')
