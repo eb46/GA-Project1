@@ -7,3 +7,41 @@ img {
   width: 360;
   height: 200;
 }
+
+#container {
+  width: 480px;
+  height: auto;
+}
+
+
+#modal {
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  overflow: auto;
+  display: none;
+}
+
+#modal-message {
+	background-color: white;
+	font-family: 'Noto Sans';
+  text-align: center;
+  justify-content: center;
+	height: 200px;
+	width: 550px;
+	border-radius: 2px;
+	margin: 150px auto;
+	padding: 2%;
+	line-height: 50px;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+#modal-close-button {
+  width: 60px;
+  height: 25px;
+  font-family: 'Noto Sans';
+}
