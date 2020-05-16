@@ -10,21 +10,22 @@ $(() => {
     url: `https://api.giphy.com/v1/gifs/search?api_key=MaEcz1xz6n3LeO2zH2QTK78RvmKV6aBS&q=The Office&limit=${numOfGifs}&offset=0&rating=G&lang=en`,
 
     "api_key": "MaEcz1xz6n3LeO2zH2QTK78RvmKV6aBS"
+
   })
     .then((gifs) => {
 
 
-      // const startFunction = () => {
-      //
-      // }
-      //
-      //
-
       const modalMessage = () => {
         const $endGame = $('<h1>').text('Great job! Prison Mike is proud of you.')
-        $endGame.appendTo('#modal-message')
-        $('#modal').css*('display', 'block')
+        const ranGif = Math.floor(Math.random() * 50)
+        const $imgGif = $('<img>')
+            .attr('src', gifs.data[ranGif].images.downsized.url)
+        $('#modal-message').append($imgGif)
+        $('#modal-message').append($endGame)
+        $('#modal').css('display', 'block')
         $('#modal-close-button').on('click', closeModal)
+
+
       }
 
       const closeModal = () => {
@@ -38,7 +39,12 @@ $(() => {
         $('#start').text('restart')
 
 
-        if (triviaQuestions.length >= 1) {
+            const checkAnswers = () => {
+              if (triviaQuestions.length === 0) {
+                modalMessage()
+              }
+            }
+
 
             const $displayQuestion = $('<div>').text(triviaQuestions[0])
             const $displayAnswer = $('<div>').text(triviaAnswers[0])
@@ -53,13 +59,12 @@ $(() => {
                 triviaAnswers.shift()
                 $displayQuestion.text(triviaQuestions[0])
                 $displayAnswer.text(triviaAnswers[0])
-                console.log(triviaQuestions.length);
+                checkAnswers()
             }
 
             const showAnswer = () => {
                 $displayQuestion.siblings().toggle()
-                console.log($(event.target));
-                console.log($displayAnswer);
+
             }
 
             $('#show-answer').on('click', (event) => {
@@ -70,21 +75,17 @@ $(() => {
                   nextQuestion()
               })
 
-          } else {
-            modalMessage()
-          }
 
 
 
 
+//////////////////// WORK ON THIS ///////////////////////
+          // grab input value in submit field
 
+          // make if statement (if value == displayanswer.text())
+          // answer correct ++
+          // show answers correct in Modal
 
-            /////////////// MODAL LOGIC HERE ///////////////////
-            // const ranGif = Math.floor(Math.random() * 50)
-            //
-            //   const $imgGif = $('<img>')
-            //       .attr('src', gifs.data[ranGif].images.downsized.url)
-            //   $('#modal').append($imgGif)
 
         })   // end of .then funciton
 
