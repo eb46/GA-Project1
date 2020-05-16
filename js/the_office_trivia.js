@@ -1,5 +1,10 @@
 
+
+
 $(() => {
+
+  // $('#next-question').hide()
+  // $('#show-answer').hide()
 
   const triviaQuestions = ["What type of farm does Dwight own?", "How long were Pam and Roy engaged?", "What tattoo is Andy forced to get?", "What is Michael's username for online dating websites?", `Who bought Michael the "Best Boss" mug?`]
   const triviaAnswers = ["Beet farm", "3-4 years", "A nard dog", "Little kid lover", "Himself"]
@@ -16,16 +21,15 @@ $(() => {
 
 
       const modalMessage = () => {
-        const $endGame = $('<h1>').text('Great job! Prison Mike is proud of you.')
+        const $endGame = $('<h3>').text('Great job! Prison Mike is proud of you.')
         const ranGif = Math.floor(Math.random() * 50)
         const $imgGif = $('<img>')
             .attr('src', gifs.data[ranGif].images.downsized.url)
+            .css({'width':'160px', 'height':'130px'})
         $('#modal-message').append($imgGif)
         $('#modal-message').append($endGame)
         $('#modal').css('display', 'block')
         $('#modal-close-button').on('click', closeModal)
-
-
       }
 
       const closeModal = () => {
@@ -36,8 +40,7 @@ $(() => {
 
       $('#start').on('click', (event) => {
         $('#answer-container').empty()
-        $('#start').text('restart')
-
+        $('#start').hide()
 
             const checkAnswers = () => {
               if (triviaQuestions.length === 0) {
@@ -45,12 +48,18 @@ $(() => {
               }
             }
 
+            const $displayQuestion = $('<div>')
+                .text(triviaQuestions[0])
+                .addClass('questions')
+            const $displayAnswer = $('<div>')
+                .text(triviaAnswers[0])
+                .addClass('answers')
 
-            const $displayQuestion = $('<div>').text(triviaQuestions[0])
-            const $displayAnswer = $('<div>').text(triviaAnswers[0])
-
-            $displayQuestion.appendTo('#answer-container')
-            $displayAnswer.appendTo('#answer-container').hide()
+            $displayQuestion
+                .appendTo('#answer-container')
+            $displayAnswer
+                .appendTo('#answer-container')
+                .hide()
 
 
             const nextQuestion = () => {
@@ -64,14 +73,13 @@ $(() => {
 
             const showAnswer = () => {
                 $displayQuestion.siblings().toggle()
-
             }
 
-            $('#show-answer').on('click', (event) => {
+            $('#show-answer-btn').on('click', (event) => {
                 showAnswer()
             })
 
-            $('#next-question').on('click', (event) => {
+            $('#next-question-btn').on('click', (event) => {
                   nextQuestion()
               })
 
@@ -85,6 +93,10 @@ $(() => {
           // make if statement (if value == displayanswer.text())
           // answer correct ++
           // show answers correct in Modal
+
+
+          // once game is done, have a restart button in modal or main screen
+          // or automatically have page refresh after modal is closed
 
 
         })   // end of .then funciton
