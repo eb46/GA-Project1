@@ -56,7 +56,7 @@ $(() => {
                 .addClass('answers')
 
             $displayQuestion
-                .appendTo('#answer-container')
+                .appendTo('#question-container')
             $displayAnswer
                 .appendTo('#answer-container')
                 .hide()
@@ -72,7 +72,7 @@ $(() => {
             }
 
             const showAnswer = () => {
-                $displayQuestion.siblings().toggle()
+                $displayAnswer.toggle()
             }
 
             $('#show-answer-btn').on('click', (event) => {
