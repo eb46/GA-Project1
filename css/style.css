@@ -18,17 +18,18 @@
 body {
   display: flex;
   flex-direction: column;
-  background-color: #cacacb;
+  background-color: rgb(253, 206, 170);
 }
 
 #logo {
   margin: auto;
-  width: 200px;
-  height: 200px;
+  width: 170px;
+  height: 170px;
 }
 
 .questions {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -36,10 +37,15 @@ body {
 
 .buttons-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   margin: 20px 0;
+}
+
+.button:hover {
+  background-color: rgb(220, 114, 128);
+  color: white;
 }
 
 #next-question-btn, #show-answer-btn {
@@ -49,11 +55,13 @@ body {
   border-radius: 5px;
   padding: 10px 18px;
   margin: 2px 5px;
-  box-shadow: 3px 3px #555555;
+  border: .5px solid rgb(194, 125, 110);
+  box-shadow: 3px 3px rgb(194, 125, 110);
+  display: none;
 }
 
-#question-container, #answer-container {
-  height: 200px;
+#question-container {
+  height: auto;
   width: auto;
   display: flex;
   justify-content: center;
@@ -63,6 +71,54 @@ body {
   font-size: 20px;
   font-weight: bold;
   text-align: center;
+  padding-top: 40px;
+  display: none;
+}
+
+
+#answer-container {
+  height: 100px;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  font-family: 'Roboto Mono';
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 40px;
+  display: none;
+}
+
+.answers {
+  margin: auto;
+  width: 50%;
+}
+
+#multiple-choice {
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  font-family: 'Roboto Mono';
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+li {
+  list-style-type: none;
+  margin: 10px;
+  color: white;
+}
+
+li:hover {
+  color: rgb(109, 92, 126);
+  cursor: pointer;
 }
 
 #start {
@@ -73,7 +129,8 @@ body {
   height: 75px;
   width: 225px;
   border: none;
-  box-shadow: 3px 3px #555555;
+  border: .5px solid rgb(194, 125, 110);
+  box-shadow: 3px 3px rgb(194, 125, 110);
   border-radius: 5px;
   padding: 10px 18px;
   margin: 20px 0;
@@ -104,9 +161,9 @@ body {
 	font-family: 'Roboto Slab';
   text-align: center;
   justify-content: center;
-	height: 250px;
-	width: 300px;
-	border-radius: 2px;
+	height: 260px;
+	width: 320px;
+	border-radius: 5px;
 	margin: 150px auto;
 	padding: 2%;
 	line-height: 20px;
