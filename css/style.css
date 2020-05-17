@@ -11,10 +11,6 @@
   /* border: 1px solid black; */
 }
 
-/* button > #next-question, #show-answer {
-  display: none,
-} */
-
 body {
   display: flex;
   flex-direction: column;
@@ -48,16 +44,23 @@ body {
   color: white;
 }
 
+#logo:hover {
+  cursor: pointer;
+}
+
 #next-question-btn, #show-answer-btn {
   font-size: 14px;
   font-family: 'Roboto Slab';
   border: none;
   border-radius: 5px;
   padding: 10px 18px;
-  margin: 2px 5px;
   border: .5px solid rgb(194, 125, 110);
   box-shadow: 3px 3px rgb(194, 125, 110);
   display: none;
+}
+
+#next-question-btn {
+  margin-bottom: 10px;
 }
 
 #question-container {
@@ -108,6 +111,7 @@ body {
   font-size: 20px;
   font-weight: bold;
   text-align: center;
+  padding-top: 10px;
 }
 
 li {

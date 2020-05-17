@@ -34,6 +34,7 @@ $(() => {
 
 
     $('#start').on('click', (event) => {
+        console.log(gifs);
         $('#next-question-btn').toggle()
         $('#show-answer-btn').toggle()
         $('#question-container').toggle()
@@ -42,19 +43,6 @@ $(() => {
         $('#answer-container').empty()
         $('#start').hide()
 
-
-
-        const endGameMessage = () => {
-          const $endGame = $('<h3>').text('Great job! Prison Mike is proud of you.')
-          const ranGif = Math.floor(Math.random() * 50)
-          const $imgGif = $('<img>')
-              .attr('src', gifs.data[ranGif].images.downsized.url)
-              .css({'width':'160px', 'height':'130px', 'margin':'auto'})
-          $('#modal-message').append($imgGif)
-          $('#modal-message').append($endGame).css({'display':'flex', 'flex-direction':'column'})
-          $('#modal').css('display', 'block')
-          $('#modal').setTimeout(closeModal, 5000)
-        }
 
         const closeModal = () => {
           $('#modal').css('display', 'none')
@@ -65,10 +53,11 @@ $(() => {
           $('#modal').css('display', 'none')
         }
 
+        $('#logo').on('click', closeModal)
 
         const rightAnswerModal = () => {
           const $rightAnswerMessage = $('<h4>').text('Correct!')
-          const ranGif = Math.floor(Math.random() * 50)
+          const ranGif = Math.floor(Math.random() * numOfGifs)
           const $imgGif = $('<img>')
               .attr('src', gifs.data[ranGif].images.downsized.url)
               .css({'width':'160px', 'height':'130px', 'margin':'auto'})
@@ -81,7 +70,7 @@ $(() => {
 
         const wrongAnswerModal = () => {
           const $wrongAnswerMessage = $('<h4>').text('Wrong!')
-          const ranGif = Math.floor(Math.random() * 50)
+          const ranGif = Math.floor(Math.random() * numOfGifs)
           const $imgGif = $('<img>')
               .attr('src', gifs.data[ranGif].images.downsized.url)
               .css({'width':'160px', 'height':'130px', 'margin':'auto'})
@@ -91,6 +80,18 @@ $(() => {
           setTimeout(closeContinue, 3000)
           // $('#modal-close-button').on('click', closeContinue)
 
+        }
+
+        const endGameMessage = () => {
+          const $endGame = $('<h3>').text('Great job! Prison Mike is proud of you.')
+          const ranGif = Math.floor(Math.random() * numOfGifs)
+          const $imgGif = $('<img>')
+              .attr('src', gifs.data[ranGif].images.downsized.url)
+              .css({'width':'160px', 'height':'130px', 'margin':'auto'})
+          $('#modal-message').append($imgGif)
+          $('#modal-message').append($endGame).css({'display':'flex', 'flex-direction':'column'})
+          $('#modal').css('display', 'block')
+          $('#modal').setTimeout(closeModal, 5000)
         }
 
         const $displayQuestion = $('<div>')
@@ -126,23 +127,20 @@ $(() => {
                 }
               }
             }
-
-
             const nextQuestion = () => {
-
               if (triviaQuestions.length === 1) {
                     endGameMessage()
               } else {
-                $('#multiple-choice').empty()
-                $displayAnswer.hide()
-                triviaQuestions.shift()
-                triviaAnswers.shift()
+                    $('#multiple-choice').empty()
+                    $displayAnswer.hide()
+                    triviaQuestions.shift()
+                    triviaAnswers.shift()
 
-                $displayQuestion.text(triviaQuestions[0])
-                $displayAnswer.text(triviaAnswers[0])
+                    $displayQuestion.text(triviaQuestions[0])
+                    $displayAnswer.text(triviaAnswers[0])
 
-                rotateMultipleChoice()
-                optionFunction()
+                    rotateMultipleChoice()
+                    optionFunction()
               }
             } // end of nextQuestion function
 
@@ -162,7 +160,6 @@ $(() => {
 
             const optionFunction = () => {
               $('.options').on('click', (event) => {
-                console.log(`option clicked!`);
                   $('#modal-message').empty()
                     const choiceText = $(event.target).text();
                     if (choiceText === triviaAnswers[0]) {
@@ -175,9 +172,9 @@ $(() => {
 
             optionFunction()
 
-        })   // end of .then funciton
+      })   // end of .then funciton
 
-      }) // end #start onclick
+    }) // end #start onclick
 
 
 }) // ON LOAD Closing
