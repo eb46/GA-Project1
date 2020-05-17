@@ -1,6 +1,3 @@
-
-
-
 $(() => {
 
   const triviaQuestions = [`Who pushed Phyllis' dad down the aisle at her wedding?`, `What type of farm does Dwight own?`, `How long were Pam and Roy engaged?`, `What tattoo is Andy forced to get?`, `What is Michael's username for online dating websites?`, `Who bought Michael the "Best Boss" mug?`, `What is the name of the award given out at the Dunder Mifflin awards banquet?`, `What is Dwight's nickname for Angela?`, `What is the name of the criminal terrorizing Scranton?`, `Who calls Jim the "Big Tuna"?`, `Where does Jim propose to Pam?`]
@@ -15,7 +12,7 @@ $(() => {
     [`A Butterfly`, `Angela's face`, `A nard dog`],
     [`LittleKidLover`, `BestBestEver`, `ReadyForMarriage`],
     [`Dwight`, `Pam`, `Holly`, `He bought it himself`],
-    [`Michael Scott Award`, `Employee of the Month`, `The Dundies`],
+    [`Michael Scott Award`, `Employee of the Year`, `The Dundies`],
     [`Babe`, `Honey`, `Monkey`, `Kitten`],
     [`The Scranton Strangler`, `The Scrantonizer`, `Scranton Terrorizer`],
     [`Dwight`, `Michael`, `Andy`, `Stanley`],
@@ -53,8 +50,6 @@ $(() => {
           $('#modal').css('display', 'none')
         }
 
-        $('#logo').on('click', closeModal)
-
         const rightAnswerModal = () => {
           const $rightAnswerMessage = $('<h4>').text('Correct!')
           const ranGif = Math.floor(Math.random() * numOfGifs)
@@ -65,7 +60,6 @@ $(() => {
           $('#modal-message').append($rightAnswerMessage).css({'display':'flex', 'flex-direction':'column'})
           $('#modal').css('display', 'block')
           setTimeout(closeContinue, 3000)
-          // $('#modal-close-button').on('click', closeContinue)
         }
 
         const wrongAnswerModal = () => {
@@ -78,11 +72,10 @@ $(() => {
           $('#modal-message').append($wrongAnswerMessage).css({'display':'flex', 'flex-direction':'column'})
           $('#modal').css('display', 'block')
           setTimeout(closeContinue, 3000)
-          // $('#modal-close-button').on('click', closeContinue)
-
         }
 
         const endGameMessage = () => {
+          $('#modal-message').empty()
           const $endGame = $('<h3>').text('Great job! Prison Mike is proud of you.')
           const ranGif = Math.floor(Math.random() * numOfGifs)
           const $imgGif = $('<img>')
@@ -91,7 +84,7 @@ $(() => {
           $('#modal-message').append($imgGif)
           $('#modal-message').append($endGame).css({'display':'flex', 'flex-direction':'column'})
           $('#modal').css('display', 'block')
-          $('#modal').setTimeout(closeModal, 5000)
+          setTimeout(closeModal, 5000)
         }
 
         const $displayQuestion = $('<div>')
@@ -108,73 +101,67 @@ $(() => {
               .appendTo('#multiple-choice')
         }
 
-
         $displayQuestion
             .appendTo('#question-container')
         $displayAnswer
             .appendTo('#answer-container')
             .hide()
 
-            // This function displays the possible answers for each question as a list item from the MultipleChoice array
-            const rotateMultipleChoice = () => {
-              if (multipleChoice[0].length > 0) {
-                multipleChoice.shift()
-              for (let options in multipleChoice[0]) {
-                const $showMultipleChoice = $('<li>')
-                    .text(multipleChoice[0][options])
-                    .addClass('options')
-                    .appendTo('#multiple-choice')
-                }
-              }
+        // This function displays the possible answers for each question as a list item from the MultipleChoice array
+        const rotateMultipleChoice = () => {
+          if (multipleChoice[0].length > 0) {
+            multipleChoice.shift()
+          for (let options in multipleChoice[0]) {
+            const $showMultipleChoice = $('<li>')
+                .text(multipleChoice[0][options])
+                .addClass('options')
+                .appendTo('#multiple-choice')
             }
-            const nextQuestion = () => {
-              if (triviaQuestions.length === 1) {
-                    endGameMessage()
+          }
+        }
+        const nextQuestion = () => {
+          if (triviaQuestions.length === 1) {
+                endGameMessage()
+          } else {
+                $('#multiple-choice').empty()
+                $displayAnswer.hide()
+                triviaQuestions.shift()
+                triviaAnswers.shift()
+
+                $displayQuestion.text(triviaQuestions[0])
+                $displayAnswer.text(triviaAnswers[0])
+
+                rotateMultipleChoice()
+                optionFunction()
+          }
+        } // end of nextQuestion function
+
+        $('#logo').on('click', closeModal)
+
+        $('#show-answer-btn').on('click', (event) => {
+              $displayAnswer.toggle()
+        }) // end of show-answer-btn on click
+
+        $('#next-question-btn').on('click', (event) => {
+              $('.options').empty()
+              nextQuestion()
+              console.log($('.options').text());
+        }) // end of next-question-btn on click
+
+        const optionFunction = () => {
+          $('.options').on('click', (event) => {
+              $('#modal-message').empty()
+                const choiceText = $(event.target).text();
+                if (choiceText === triviaAnswers[0]) {
+                    rightAnswerModal()
               } else {
-                    $('#multiple-choice').empty()
-                    $displayAnswer.hide()
-                    triviaQuestions.shift()
-                    triviaAnswers.shift()
-
-                    $displayQuestion.text(triviaQuestions[0])
-                    $displayAnswer.text(triviaAnswers[0])
-
-                    rotateMultipleChoice()
-                    optionFunction()
+                    wrongAnswerModal()
               }
-            } // end of nextQuestion function
-
-            const showAnswer = () => {
-                $displayAnswer.toggle()
-            } // end of showAnswer function
-
-            $('#show-answer-btn').on('click', (event) => {
-                  showAnswer()
-            }) // end of show-answer-btn on click
-
-            $('#next-question-btn').on('click', (event) => {
-                  $('.options').empty()
-                  nextQuestion()
-                  console.log($('.options').text());
-            }) // end of next-question-btn on click
-
-            const optionFunction = () => {
-              $('.options').on('click', (event) => {
-                  $('#modal-message').empty()
-                    const choiceText = $(event.target).text();
-                    if (choiceText === triviaAnswers[0]) {
-                        rightAnswerModal()
-                  } else {
-                        wrongAnswerModal()
-                  }
-              })
-            }
-
-            optionFunction()
-
+          })
+        }
+          optionFunction()
       })   // end of .then funciton
 
     }) // end #start onclick
-
 
 }) // ON LOAD Closing

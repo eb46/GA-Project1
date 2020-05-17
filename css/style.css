@@ -18,7 +18,7 @@ body {
 }
 
 #logo {
-  margin: auto;
+  margin: 15px auto auto auto;
   width: 170px;
   height: 170px;
 }
@@ -149,7 +149,7 @@ li:hover {
 
 
 #modal {
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.6);
   position: fixed;
   top: 0;
   left: 0;
@@ -171,7 +171,7 @@ li:hover {
 	margin: 150px auto;
 	padding: 2%;
 	line-height: 20px;
-	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
 }
 
 #modal-close-button {
