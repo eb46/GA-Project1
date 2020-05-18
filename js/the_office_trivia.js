@@ -91,7 +91,7 @@ $(() => {
             .text(triviaQuestions[0])
             .addClass('questions')
         const $displayAnswer = $('<div>')
-            .text(triviaAnswers[0])
+            .text(`The answer is: ${triviaAnswers[0]}`)
             .addClass('answers')
 
         for (let options in multipleChoice[0]) {
@@ -129,7 +129,7 @@ $(() => {
                 triviaAnswers.shift()
 
                 $displayQuestion.text(triviaQuestions[0])
-                $displayAnswer.text(triviaAnswers[0])
+                $displayAnswer.text(`The answer is: ${triviaAnswers[0]}`)
 
                 rotateMultipleChoice()
                 optionFunction()
