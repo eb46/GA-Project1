@@ -59,7 +59,7 @@ $(() => {
           $('#modal-message').append($imgGif)
           $('#modal-message').append($rightAnswerMessage).css({'display':'flex', 'flex-direction':'column'})
           $('#modal').css('display', 'block')
-          setTimeout(closeContinue, 3000)
+          setTimeout(closeContinue, 3500)
         }
 
         const wrongAnswerModal = () => {
@@ -71,7 +71,7 @@ $(() => {
           $('#modal-message').append($imgGif)
           $('#modal-message').append($wrongAnswerMessage).css({'display':'flex', 'flex-direction':'column'})
           $('#modal').css('display', 'block')
-          setTimeout(closeContinue, 3000)
+          setTimeout(closeContinue, 3500)
         }
 
         const endGameMessage = () => {
