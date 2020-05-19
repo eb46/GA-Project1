@@ -93,10 +93,6 @@ $(() => {
           } else if (multipleChoice.length === 1 ) {
                 $('#multiple-choice-bonus').toggle()
                 multipleChoice.shift()
-                $('#prison-mike').toggle()
-                $('#agent-scarn').toggle()
-                $('#date-mike').toggle()
-                $('#magician-mike').toggle()
               }
             }
 

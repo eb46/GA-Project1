@@ -16,14 +16,9 @@
 }
 
 #logo {
-  margin: 15px auto auto auto;
+  margin: 1.5em auto auto auto;
   width: 170px;
   height: 170px;
-}
-
-.alterEgo {
-  width: 5em;
-  height: 5em;
 }
 
 .questions {
@@ -102,7 +97,7 @@
   height: auto;
   width: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -111,6 +106,33 @@
   font-weight: bold;
   text-align: center;
   padding-top: 1em;
+}
+
+.alterEgo {
+  opacity: 1;
+  width: 5em;
+  height: 5em;
+  margin: .5em;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  text-align: center;
+}
+
+.ego-name {
+  opacity: 1;
+  color: #2A363B;
+}
+
+.ego-container:hover img {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.ego-container:hover .middle {
+  opacity: 1;
 }
 
 li {
@@ -209,6 +231,7 @@ li:hover {
     #logo {
       width: 240px;
       height: 240px;
+      margin-top: 2em;
     }
 
     #next-question-btn, #show-answer-btn {
@@ -234,8 +257,9 @@ li:hover {
     }
 
     .alterEgo {
-      width: 5em;
-      height: 5em;
+      width: 8em;
+      height: 8em;
+      margin: 3em;
     }
 
     img {
