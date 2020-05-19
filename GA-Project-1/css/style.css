@@ -48,6 +48,7 @@
 
 #next-question-btn, #show-answer-btn {
   font-size: 14px;
+  color: #2A363B;
   font-family: 'Roboto Slab';
   border: none;
   border-radius: 5px;
@@ -69,10 +70,11 @@
   align-items: center;
   align-content: center;
   font-family: 'Roboto Mono';
+  color: #2A363B;
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-  padding-top: 40px;
+  padding: 40px 5px 0 5px;
   display: none;
 }
 
@@ -84,10 +86,11 @@
   align-items: center;
   align-content: center;
   font-family: 'Roboto Mono';
+  color: #C06C84;
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-  padding-top: 40px;
+  padding-top: 20px;
   display: none;
 }
 
@@ -160,6 +163,7 @@ li:hover {
 #modal-message {
 	background-color: white;
 	font-family: 'Roboto Slab';
+  color: #2A363B;
   text-align: center;
   justify-content: center;
 	height: 260px;
@@ -178,7 +182,7 @@ li:hover {
   font-size: 14px;
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   #logo {
     width: 240px;
     height: 240px;
