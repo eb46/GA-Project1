@@ -112,13 +112,21 @@
   opacity: 1;
   width: 5em;
   height: 5em;
-  margin: .5em;
+}
+
+.alterEgo {
+  border-radius: 50%;
+  background-color: #355C7D;
 }
 
 .middle {
   transition: .5s ease;
   opacity: 0;
   text-align: center;
+}
+
+.ego-container {
+  margin-top: 0;
 }
 
 .ego-name {
@@ -235,19 +243,19 @@ li:hover {
     }
 
     #next-question-btn, #show-answer-btn {
-      font-size: 24px;
+      font-size: 22px;
     }
 
     #question-container {
-      font-size: 30px;
+      font-size: 28px;
     }
 
     #multiple-choice {
-      font-size: 30px;
+      font-size: 28px;
     }
 
     #answer-container {
-      font-size: 30px;
+      font-size: 28px;
     }
 
     #modal-message {
@@ -259,7 +267,7 @@ li:hover {
     .alterEgo {
       width: 8em;
       height: 8em;
-      margin: 3em;
+      margin: 2em;
     }
 
     img {
