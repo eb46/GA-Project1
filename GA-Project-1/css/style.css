@@ -21,6 +21,11 @@
   height: 170px;
 }
 
+.alterEgo {
+  width: 5em;
+  height: 5em;
+}
+
 .questions {
   display: flex;
   flex-direction: column;
@@ -71,32 +76,11 @@
   align-content: center;
   font-family: 'Roboto Mono';
   color: #2A363B;
-  font-size: 20px;
+  font-size: 1.2em;
   font-weight: bold;
   text-align: center;
-  padding: 40px 5px 0 5px;
+  padding: 1em 1em 0 1em;
   display: none;
-}
-
-#answer-container {
-  height: 100px;
-  width: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  font-family: 'Roboto Mono';
-  color: #C06C84;
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  padding-top: 20px;
-  display: none;
-}
-
-.answers {
-  margin: auto;
-  width: 50%;
 }
 
 #multiple-choice {
@@ -108,21 +92,61 @@
   align-items: center;
   align-content: center;
   font-family: 'Roboto Mono';
-  font-size: 20px;
+  font-size: 1.3em;
   font-weight: bold;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 1em;
+}
+
+#multiple-choice-bonus {
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  font-family: 'Roboto Mono';
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 1em;
 }
 
 li {
   list-style-type: none;
-  margin: 10px;
+  margin: .5em;
   color: white;
 }
 
 li:hover {
   color: rgb(109, 92, 126);
   cursor: pointer;
+}
+
+.alterEgo:hover {
+
+}
+
+#answer-container {
+  height: 100px;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  font-family: 'Roboto Mono';
+  color: #C06C84;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 1em;
+  display: none;
+}
+
+.answers {
+  margin: auto;
+  width: 50%;
 }
 
 #start {
@@ -146,7 +170,6 @@ li:hover {
   display: flex;
   flex-direction: column;
 }
-
 
 #modal {
   background-color: rgba(0,0,0,0.6);
@@ -183,37 +206,41 @@ li:hover {
 }
 
 @media (min-width: 1024px) {
-  #logo {
-    width: 240px;
-    height: 240px;
-  }
+    #logo {
+      width: 240px;
+      height: 240px;
+    }
 
-  #next-question-btn, #show-answer-btn {
-    font-size: 24px;
-  }
+    #next-question-btn, #show-answer-btn {
+      font-size: 24px;
+    }
 
-  #question-container {
-    font-size: 30px;
-  }
+    #question-container {
+      font-size: 30px;
+    }
 
-  #multiple-choice {
-    font-size: 30px;
-  }
+    #multiple-choice {
+      font-size: 30px;
+    }
 
-  #answer-container {
-    font-size: 30px;
-  }
+    #answer-container {
+      font-size: 30px;
+    }
 
-  #modal-message {
-  	height: 320px;
-  	width: 400px;
-    font-size: 32px;
-    line-height: 4px;
-  }
+    #modal-message {
+    	height: 320px;
+    	width: 400px;
+      font-size: 22px;
+    }
 
-  img {
-    width: 200px;
-    height: 150px;
-  }
+    .alterEgo {
+      width: 5em;
+      height: 5em;
+    }
+
+    img {
+      width: 200px;
+      height: 150px;
+    }
 
 }

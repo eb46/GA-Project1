@@ -1,8 +1,8 @@
 $(() => {
 
-  const triviaQuestions = [`Who pushed Phyllis' dad down the aisle at her wedding?`, `What type of farm does Dwight own?`, `How long were Pam and Roy engaged?`, `What tattoo is Andy forced to get?`, `What is Michael's username for online dating websites?`, `Who bought Michael the "Best Boss" mug?`, `What is the name of the award given out at the Dunder Mifflin awards banquet?`, `What is Dwight's nickname for Angela?`, `What is the name of the criminal terrorizing Scranton?`, `Who calls Jim the "Big Tuna"?`, `Where does Jim propose to Pam?`]
+  const triviaQuestions = [`Who pushed Phyllis' dad down the aisle at her wedding?`, `What type of farm does Dwight own?`, `How long were Pam and Roy engaged?`, `What tattoo is Andy forced to get?`, `What is Michael's username for online dating websites?`, `Who bought Michael the "Best Boss" mug?`, `What is the name of the award given out at the Dunder Mifflin awards banquet?`, `What is Dwight's nickname for Angela?`, `What is the name of the criminal terrorizing Scranton?`, `Who calls Jim the "Big Tuna"?`, `Where does Jim propose to Pam?`, `Which is Michael's best alter ego?`]
 
-  const triviaAnswers = [`Michael`, `Beets`, `3-4 years`, `A nard dog`, `LittleKidLover`, `He bought it himself`, `The Dundies`, `Monkey`, `The Scranton Strangler`, `Andy`, `A gas station`]
+  const triviaAnswers = [`Michael`, `Beets`, `3-4 years`, `A nard dog`, `LittleKidLover`, `He bought it himself`, `The Dundies`, `Monkey`, `The Scranton Strangler`, `Andy`, `A gas station`, `idk, you tell me. I promise I won't judge`]
 
   const multipleChoice = [
     [`Dwight`, `Michael`, `Jim`],
@@ -15,7 +15,7 @@ $(() => {
     [`Babe`, `Honey`, `Monkey`, `Kitten`],
     [`The Scranton Strangler`, `The Scrantonizer`, `Scranton Terrorizer`],
     [`Dwight`, `Michael`, `Andy`, `Stanley`],
-    [`At Pam's desk`, `At the holiday party`, `A gas station`]
+    [`At Pam's desk`, `At the holiday party`, `A gas station`],
   ]
 
   const numOfGifs = 40
@@ -49,7 +49,7 @@ $(() => {
           const ranGif = Math.floor(Math.random() * numOfGifs)
           const $imgGif = $('<img>')
               .attr('src', gifs.data[ranGif].images.downsized.url)
-              .css({'width':'160px', 'height':'130px', 'margin':'auto'})
+              .css({'width':'200px', 'height':'150px', 'margin':'auto'})
           $('#modal-message').append($imgGif)
           $('#modal-message').append($newModalMessage).css({'display':'flex', 'flex-direction':'column'})
           $('#modal').css('display', 'block')
@@ -81,16 +81,24 @@ $(() => {
 
         // This function displays the possible answers for each question as a list item from the MultipleChoice array
         const rotateMultipleChoice = () => {
-          if (multipleChoice[0].length > 0) {
+          if (multipleChoice.length > 1) {
             multipleChoice.shift()
           for (let options in multipleChoice[0]) {
             const $showMultipleChoice = $('<li>')
                 .text(multipleChoice[0][options])
                 .addClass('options')
                 .appendTo('#multiple-choice')
+                console.log(multipleChoice.length);
             }
-          }
-        }
+          } else if (multipleChoice.length === 1 ) {
+                $('#multiple-choice-bonus').toggle()
+                multipleChoice.shift()
+                $('#prison-mike').toggle()
+                $('#agent-scarn').toggle()
+                $('#date-mike').toggle()
+                $('#magician-mike').toggle()
+              }
+            }
 
         const nextQuestion = () => {
           if (triviaQuestions.length === 1) {
@@ -122,6 +130,11 @@ $(() => {
               nextQuestion()
               console.log($('.options').text());
         }) // end of next-question-btn on click
+
+        $('.alterEgo').on('click', (egoPicked) => {
+            //take event.target value and pass through to modal message
+            nextQuestion()
+        })
 
         const optionFunction = () => {
           $('.options').on('click', (event) => {
