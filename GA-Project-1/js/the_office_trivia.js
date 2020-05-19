@@ -1,6 +1,6 @@
 $(() => {
 
-  const triviaQuestions = [`Who pushed Phyllis' dad down the aisle at her wedding?`, `What type of farm does Dwight own?`, `How long were Pam and Roy engaged?`, `What tattoo is Andy forced to get?`, `What is Michael's username for online dating websites?`, `Who bought Michael the "Best Boss" mug?`, `What is the name of the award given out at the Dunder Mifflin awards banquet?`, `What is Dwight's nickname for Angela?`, `What is the name of the criminal terrorizing Scranton?`, `Who calls Jim the "Big Tuna"?`, `Where does Jim propose to Pam?`, `Which is Michael's best alter ego?`]
+  const triviaQuestions = [`Who pushed Phyllis' dad down the aisle at her wedding?`, `What type of farm does Dwight own?`, `How long were Pam and Roy engaged?`, `What tattoo is Andy forced to get?`, `What is Michael's username for online dating websites?`, `Who bought Michael the "Best Boss" mug?`, `What is the name of the award given out at the Dunder Mifflin awards banquet?`, `What is Dwight's nickname for Angela?`, `What is the name of the criminal terrorizing Scranton?`, `Who calls Jim the "Big Tuna"?`, `Where does Jim propose to Pam?`, `Who is Michael's best alter ego?`]
 
   const triviaAnswers = [`Michael`, `Beets`, `3-4 years`, `A nard dog`, `LittleKidLover`, `He bought it himself`, `The Dundies`, `Monkey`, `The Scranton Strangler`, `Andy`, `A gas station`, `idk, you tell me. I promise I won't judge`]
 
@@ -35,6 +35,26 @@ $(() => {
         $('#answer-container').empty()
         $('#start').hide()
 
+        const $displayQuestion = $('<div>')
+            .text(triviaQuestions[0])
+            .addClass('questions')
+        const $displayAnswer = $('<div>')
+            .text(`The answer is: ${triviaAnswers[0]}`)
+            .addClass('answers')
+
+        for (let options in multipleChoice[0]) {
+          const $showMultipleChoice = $('<li>')
+              .text(multipleChoice[0][options])
+              .addClass('options')
+              .appendTo('#multiple-choice')
+        }
+
+        $displayQuestion
+            .appendTo('#question-container')
+        $displayAnswer
+            .appendTo('#answer-container')
+            .hide()
+
         const closeModal = () => {
           $('#modal').css('display', 'none')
             window.location.reload()
@@ -59,26 +79,6 @@ $(() => {
           }
         }
 
-        const $displayQuestion = $('<div>')
-            .text(triviaQuestions[0])
-            .addClass('questions')
-        const $displayAnswer = $('<div>')
-            .text(`The answer is: ${triviaAnswers[0]}`)
-            .addClass('answers')
-
-        for (let options in multipleChoice[0]) {
-          const $showMultipleChoice = $('<li>')
-              .text(multipleChoice[0][options])
-              .addClass('options')
-              .appendTo('#multiple-choice')
-        }
-
-        $displayQuestion
-            .appendTo('#question-container')
-        $displayAnswer
-            .appendTo('#answer-container')
-            .hide()
-
         // This function displays the possible answers for each question as a list item from the MultipleChoice array
         const rotateMultipleChoice = () => {
           if (multipleChoice.length > 1) {
@@ -99,7 +99,7 @@ $(() => {
         const nextQuestion = () => {
           if (triviaQuestions.length === 1) {
                 $('#modal-message').empty()
-                const modalText = `Great job! You got ${score} questions right! Prison Mike would be proud of you.`
+                const modalText = `Great job! You got ${score} question(s) right! Prison Mike would be proud of you.`
                 newModal(modalText)
           } else {
                 $('#multiple-choice').empty()
@@ -127,7 +127,9 @@ $(() => {
               console.log($('.options').text());
         }) // end of next-question-btn on click
 
-        $('.alterEgo').on('click', (egoPicked) => {
+        $('.alterEgo').on('click', () => {
+            const egoPicked = $(event.target).text()
+            console.log(egoPicked);
             //take event.target value and pass through to modal message
             nextQuestion()
         })
@@ -151,5 +153,8 @@ $(() => {
           }
           optionFunction()
       })   // end of .then funciton
+      .error((gifs) => {
+        console.log(gifs);
+      }) // end .error function
     }) // end #start onclick
 }) // ON LOAD Closing
