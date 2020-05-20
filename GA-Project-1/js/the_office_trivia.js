@@ -73,9 +73,9 @@ $(() => {
           $('#modal-message').append($imgGif)
           $('#modal-message').append($newModalMessage).css({'display':'flex', 'flex-direction':'column'})
           $('#modal').css('display', 'block')
-          setTimeout(closeContinue, 4000)
+          setTimeout(closeContinue, 5000)
           if (triviaQuestions.length === 1) {
-            setTimeout(closeModal, 4000)
+            setTimeout(closeModal, 5000)
           }
         }
 
