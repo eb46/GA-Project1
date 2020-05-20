@@ -58,7 +58,7 @@ $(() => {
         const closeModal = () => {
           $('#modal').css('display', 'none')
             window.location.reload()
-        } // end of closeModal function
+        } 
 
         const closeContinue = () => {
           $('#modal').css('display', 'none')
@@ -78,7 +78,6 @@ $(() => {
             setTimeout(closeModal, 5000)
           }
         }
-
         // This function displays the possible answers for each question as a list item from the MultipleChoice array
         const rotateMultipleChoice = () => {
           if (multipleChoice.length > 1) {
@@ -88,7 +87,6 @@ $(() => {
                 .text(multipleChoice[0][options])
                 .addClass('options')
                 .appendTo('#multiple-choice')
-                console.log(multipleChoice.length);
             }
           } else if (multipleChoice.length === 1 ) {
                 $('#multiple-choice-bonus').toggle()
@@ -124,13 +122,10 @@ $(() => {
         $('#next-question-btn').on('click', (event) => {
               $('.options').empty()
               nextQuestion()
-              console.log($('.options').text());
         }) // end of next-question-btn on click
 
         $('.alterEgo').on('click', () => {
             const egoPicked = $(event.target).text()
-            console.log(egoPicked);
-            //take event.target value and pass through to modal message
             nextQuestion()
         })
 
@@ -140,7 +135,6 @@ $(() => {
                 const choiceText = $(event.target).text();
                 if (choiceText === triviaAnswers[0]) {
                     score++
-                    console.log(score);
                     const modalText = `Correct answer!`
                     newModal(modalText)
                     nextQuestion()
@@ -151,10 +145,10 @@ $(() => {
               } // end of else
             }) // end of click event
           }
-          optionFunction()
+        optionFunction()
       })   // end of .then funciton
-      .error((gifs) => {
-        console.log(gifs);
+      .error((error) => {
+        console.log(`error`);
       }) // end .error function
     }) // end #start onclick
 }) // ON LOAD Closing
