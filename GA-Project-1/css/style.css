@@ -17,8 +17,8 @@
 
 #logo {
   margin: 1.5em auto auto auto;
-  width: 170px;
-  height: 170px;
+  width: 20%;
+  height: 20%;
 }
 
 .questions {
@@ -237,9 +237,9 @@ li:hover {
 
 @media (min-width: 1024px) {
     #logo {
-      width: 240px;
-      height: 240px;
-      margin-top: 2em;
+      width: 220px;
+      height: 220px;
+      margin-top: 2vh;
     }
 
     #next-question-btn, #show-answer-btn {
