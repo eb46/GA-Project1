@@ -58,7 +58,7 @@ $(() => {
         const closeModal = () => {
           $('#modal').css('display', 'none')
             window.location.reload()
-        } 
+        }
 
         const closeContinue = () => {
           $('#modal').css('display', 'none')
