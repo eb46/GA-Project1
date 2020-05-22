@@ -55,11 +55,13 @@ $(() => {
             .appendTo('#answer-container')
             .hide()
 
+        /////////// This function closes the modal and refreshes webpage
         const closeModal = () => {
           $('#modal').css('display', 'none')
             window.location.reload()
         }
 
+        /////////// This function closes the modal and DOES NOT refresh page
         const closeContinue = () => {
           $('#modal').css('display', 'none')
         }
