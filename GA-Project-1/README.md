@@ -1,3 +1,7 @@
+# Live Link
+
+https://eb46.github.io/GA-Project-1/
+
 # GA-Project1 - The Office Trivia
 
 For my project, I decided to build The Office TV show trivia game. My API of choice was the Giphy API.
